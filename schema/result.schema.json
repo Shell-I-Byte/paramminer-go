@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/paramminer-go/schema/result-v1.json",
+  "title": "ParamMiner-Go result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "version",
+    "mode",
+    "input_sha256",
+    "findings",
+    "notes"
+  ],
+  "properties": {
+    "schema": {
+      "const": "paramminer.result/v1"
+    },
+    "version": {
+      "const": "v0.1.0-rc11"
+    },
+    "mode": {
+      "enum": [
+        "inventory",
+        "probe"
+      ]
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,63}$"
+          },
+          "status": {
+            "enum": [
+              "observed",
+              "inferred"
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

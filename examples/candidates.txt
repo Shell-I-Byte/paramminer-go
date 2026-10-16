@@ -1,0 +1,4 @@
+# Only scan your OWN local synthetic test service.
+mode
+lang
+verbose

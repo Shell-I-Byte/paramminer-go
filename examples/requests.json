@@ -1,0 +1,1 @@
+{"requests":[{"method":"GET","url":"https://example.invalid/catalog?page=1&lang=nl"},{"method":"POST","url":"https://example.invalid/api?lang=en"}]}
